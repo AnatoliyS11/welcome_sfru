@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Добро пожаловать — SF.RU Стажировка 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange:  #E8541E;
+  --ink:     #18191F;
+  --slate:   #3A3D4A;
+  --muted:   #787B89;
+  --border:  #E2E4EA;
+  --bg:      #FFFFFF;
+  --bg-lt:   #F8F9FB;
+  --bg-mid:  #ECEEF3;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ECEEF3;
+  color: var(--ink);
+  padding: 32px 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+/* HEADER */
+.hdr { background: var(--ink); }
+
+.hdr-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.logo-dot { color: var(--orange); }
+
+.hdr-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+
+.hdr-body {
+  padding: 36px 32px 40px;
+}
+.hdr-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.hdr-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hdr-title span { color: var(--orange); }
+.hdr-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+/* FACTS */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 2px solid var(--orange);
+}
+.fact {
+  padding: 18px 22px;
+  border-right: 1px solid var(--border);
+}
+.fact:last-child { border-right: none; }
+.fact-lbl {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.fact-val {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.fact-val.accent { color: var(--orange); }
+
+/* BODY */
+.body { padding: 36px 32px; }
+
+.intro {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--slate);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.intro-hi {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* FREE NOTE */
+.free-note {
+  background: var(--bg-lt);
+  border-left: 3px solid var(--orange);
+  padding: 14px 18px;
+  margin-bottom: 32px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.free-note strong { color: var(--ink); font-weight: 600; }
+
+/* SECTION HEAD */
+.sh {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 18px;
+}
+.sh-mark {
+  width: 3px;
+  height: 18px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+.sh-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.sh-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* TIMELINE - equal height rows via table layout */
+.tl {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+.tl-row {
+  display: table-row;
+}
+.tl-left {
+  display: table-cell;
+  width: 80px;
+  vertical-align: top;
+  padding: 0;
+}
+.tl-right {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0;
+  border-left: 1px solid var(--border);
+}
+.tl-gap {
+  display: table-row;
+  height: 2px;
+}
+.tl-gap td { background: var(--bg); display: table-cell; }
+
+.tl-marker {
+  background: var(--ink);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  gap: 5px;
+}
+.tl-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.tl-date {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  line-height: 1.4;
+}
+.tl-content {
+  padding: 18px 20px;
+  background: var(--bg-lt);
+}
+.tl-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.tl-desc strong { color: var(--slate); font-weight: 600; }
+
+.tl-row.w0  .tl-marker { background: #5C2E00; }
+.tl-row.w12 .tl-marker { background: var(--orange); }
+.tl-row.w3  .tl-marker { background: #2D3547; }
+.tl-row.w4  .tl-marker { background: var(--ink); }
+
+/* SELECTION BLOCK */
+.selection-block {
+  border: 1px solid var(--border);
+  margin: 16px 0 0;
+}
+.sel-head {
+  background: var(--ink);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 11px 18px;
+}
+.sel-body { background: var(--bg); }
+.sel-item { padding: 16px 18px; }
+.sel-step {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 7px;
+}
+.sel-text {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.75;
+}
+.sel-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 18px;
+}
+
+/* CALLOUT */
+.callout {
+  background: #FFFBF5;
+  border: 1px solid #E8C88A;
+  padding: 13px 17px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: #5A3800;
+  line-height: 1.7;
+}
+.callout strong { font-weight: 600; }
+
+/* TRACKS */
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 0;
+}
+.track {
+  background: var(--bg);
+  padding: 18px 16px;
+}
+.track-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.track-name {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.track-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* HOW LIST */
+.how-list { display: flex; flex-direction: column; gap: 1px; }
+.how-item {
+  display: flex;
+}
+.how-n {
+  width: 36px;
+  flex-shrink: 0;
+  background: var(--bg-mid);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--orange);
+  font-family: 'Unbounded', sans-serif;
+}
+.how-body {
+  flex: 1;
+  background: var(--bg-lt);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.7;
+  border-left: 1px solid var(--border);
+}
+.how-body strong { color: var(--ink); font-weight: 600; }
+
+/* SCORES */
+.scores {
+  border: 1px solid var(--border);
+}
+.s-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.s-row:last-child { border-bottom: none; }
+.s-label {
+  width: 180px;
+  flex-shrink: 0;
+  padding: 12px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.s-text {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  border-left: 1px solid var(--border);
+  background: var(--bg-lt);
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.s-row.g .s-label { background: #F0FAF5; color: #0A5235; }
+.s-row.g .s-dot   { background: #1A8A5A; }
+.s-row.a .s-label { background: #FFFBF0; color: #5A3800; }
+.s-row.a .s-dot   { background: #D4860A; }
+.s-row.r .s-label { background: #FEF3F2; color: #7B1C1C; }
+.s-row.r .s-dot   { background: #C0321B; }
+.s-row.x .s-label { background: var(--bg-lt); color: #444; }
+.s-row.x .s-dot   { background: #AAAFBE; }
+
+/* STEPS */
+.step-list { display: flex; flex-direction: column; gap: 1px; }
+.step-item { display: flex; }
+.step-n {
+  width: 40px;
+  flex-shrink: 0;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.step-body {
+  flex: 1;
+  background: var(--bg-lt);
+  padding: 13px 18px;
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.7;
+  border-left: 1px solid var(--border);
+}
+.step-body strong { color: var(--ink); font-weight: 600; }
+
+/* CTA */
+.cta {
+  background: var(--ink);
+  padding: 36px 32px;
+  text-align: center;
+  margin: 36px -32px -36px;
+}
+.cta-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.cta-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.cta-sub {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 14px 36px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.cta-hint {
+  margin-top: 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,.25);
+  font-style: italic;
+}
+
+/* FOOTER */
+.ftr {
+  background: var(--bg-lt);
+  border-top: 1px solid var(--border);
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ftr-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.ftr-logo span { color: var(--orange); }
+.ftr-info {
+  font-size: 11.5px;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(2) { border-right: none; }
+  .fact:nth-child(3) { border-top: 1px solid var(--border); grid-column: 1 / -1; }
+  .tracks { grid-template-columns: 1fr; }
+  .hdr-title { font-size: 24px; }
+  .body { padding: 28px 20px; }
+  .hdr-body { padding: 28px 20px 32px; }
+  .hdr-top { padding: 16px 20px; }
+  .cta { margin: 32px -20px -28px; padding: 28px 20px; }
+  .ftr { flex-direction: column; gap: 10px; align-items: flex-start; padding: 16px 20px; }
+  .s-label { width: 140px; font-size: 11.5px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="hdr-top">
+      <div class="logo">SF<span class="logo-dot">.</span>RU</div>
+      <div class="hdr-tag">Отбор 2026</div>
+    </div>
+    <div class="hdr-body">
+      <div class="hdr-label">Solutions Factory — приглашение на отбор</div>
+      <div class="hdr-title">Ты на старте.<br><span>Отбор впереди.</span></div>
+      <div class="hdr-desc">Поздравляем — ты прошёл первичный отбор и приглашён на нулевую неделю стажировки SF.RU. Основной отбор пройдёт по её итогам: на полную программу попадут только те, кто проявил себя и выполнил задания. Это письмо расскажет, как всё устроено и что нужно сделать прямо сейчас.</div>
+    </div>
+  </div>
+
+  <!-- FACTS -->
+  <div class="facts">
+    <div class="fact">
+      <div class="fact-lbl">Стоимость</div>
+      <div class="fact-val">Бесплатно</div>
+    </div>
+    <div class="fact">
+      <div class="fact-lbl">Длительность</div>
+      <div class="fact-val accent">1,5 месяца</div>
+    </div>
+    <div class="fact">
+      <div class="fact-lbl">Старт</div>
+      <div class="fact-val">12 мая 2026</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p class="intro">
+      <span class="intro-hi">Привет!</span>
+      Ты приглашён на первый поток отбора в стажировку SF.RU — агентства комплексного digital-маркетинга. Мы работаем с бюджетами от 500 тыс.руб./мес., входим в ТОП-100 DataInsight и ведём проекты в e-commerce, B2B и edtech. Первая неделя — нулевая — это одновременно и знакомство с профессией, и основной этап отбора.
+    </p>
+
+    <div class="free-note">
+      <strong>Стажировка полностью бесплатная с обеих сторон.</strong> Мы не берём денег. Вы получаете структурированное обучение, обратную связь от практиков с 5+ годами опыта и реальный старт в профессии digital-маркетинга.
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="sh">
+      <div class="sh-mark"></div>
+      <div class="sh-text">Программа обучения</div>
+      <div class="sh-rule"></div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-row w0">
+        <td class="tl-left">
+          <div class="tl-marker">
+            <div class="tl-num">0</div>
+            <div class="tl-date">12-18<br>мая</div>
+          </div>
+        </td>
+        <td class="tl-right">
+          <div class="tl-content">
+            <div class="tl-title">Нулевая неделя</div>
+            <div class="tl-desc"><strong>Первая неделя полностью самостоятельная.</strong> Никаких встреч и звонков. Темы: базовые метрики digital (CTR, CPC, CPA, ROAS, ДРР), терминология маркетинга, введение в маркетплейсы. Два задания до 18 мая: тест по Excel и видеозапись о себе (2 минуты).</div>
+          </div>
+        </td>
+      </div>
+      <div class="tl-gap"><td colspan="2"></td></div>
+      <div class="tl-row w12">
+        <td class="tl-left">
+          <div class="tl-marker">
+            <div class="tl-num">1-2</div>
+            <div class="tl-date">19 мая -<br>1 июня</div>
+          </div>
+        </td>
+        <td class="tl-right">
+          <div class="tl-content">
+            <div class="tl-title">Общий блок</div>
+            <div class="tl-desc">Для всех стажёров: структура агентства и рабочие процессы, Яндекс.Директ и Метрика на базовом уровне, Вордстат, Excel для маркетолога (ВПР, сводные таблицы), основы рекламы на WB и Ozon, коммуникация в команде. <strong>В конце второй недели выбираешь специализацию.</strong></div>
+          </div>
+        </td>
+      </div>
+      <div class="tl-gap"><td colspan="2"></td></div>
+      <div class="tl-row w3">
+        <td class="tl-left">
+          <div class="tl-marker">
+            <div class="tl-num">3</div>
+            <div class="tl-date">2-8<br>июня</div>
+          </div>
+        </td>
+        <td class="tl-right">
+          <div class="tl-content">
+            <div class="tl-title">Специализация</div>
+            <div class="tl-desc">Углублённая работа по выбранному треку: инструменты, регламенты и чек-листы из реальных проектов SF.RU, разбор кейсов. Практическое задание с проверкой куратора и письменной обратной связью.</div>
+          </div>
+        </td>
+      </div>
+      <div class="tl-gap"><td colspan="2"></td></div>
+      <div class="tl-row w4">
+        <td class="tl-left">
+          <div class="tl-marker">
+            <div class="tl-num">4</div>
+            <div class="tl-date">9-22<br>июня</div>
+          </div>
+        </td>
+        <td class="tl-right">
+          <div class="tl-content">
+            <div class="tl-title">Финал</div>
+            <div class="tl-desc">Итоговое задание и защита перед куратором (10-15 минут). Прозрачная система баллов. Лучшие стажёры получают <strong>предложение о работе в штат SF.RU сразу после защиты.</strong></div>
+          </div>
+        </td>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Важно:</strong> нулевая неделя — это не просто знакомство с материалом. Это основной этап отбора. На полную программу стажировки пройдут только те, кто выполнил оба задания и проявил реальный интерес. Куратор не пишет первым, дедлайнов нет — но именно твои действия на этой неделе определят, продолжишь ли ты обучение с 19 мая.
+    </div>
+
+    <div class="selection-block">
+      <div class="sel-head">Как работает отбор внутри потока</div>
+      <div class="sel-body">
+        <div class="sel-item">
+          <div class="sel-step">После нулевой недели — основной отбор</div>
+          <div class="sel-text">По итогам нулевой недели мы смотрим на тест по Excel, видеозапись и то, как кандидат подошёл к самостоятельному этапу. На полную программу с 19 мая проходят только те, кто сдал оба задания и проявил реальную вовлечённость. Кандидаты, которые не сдали задания или прислали формальный ответ, на дальнейшее обучение не допускаются.</div>
+        </div>
+        <div class="sel-divider"></div>
+        <div class="sel-item">
+          <div class="sel-step">В течение стажировки</div>
+          <div class="sel-text">Каждую неделю куратор оценивает задания. Если два задания не сданы подряд - стажёр выбывает автоматически. Это не наказание, а честное правило: у нас ограниченный ресурс кураторов, и мы тратим его на тех, кто действительно хочет расти.</div>
+        </div>
+        <div class="sel-divider"></div>
+        <div class="sel-item">
+          <div class="sel-step">По итогу стажировки</div>
+          <div class="sel-text">Лучшие стажёры получают предложение о работе в штат SF.RU. Мы целенаправленно растим специалистов под себя - на наших стандартах и процессах. Если ты дошёл до финала и показал результат, разговор о трудоустройстве произойдёт сразу после защиты.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACKS -->
+    <div class="sh">
+      <div class="sh-mark"></div>
+      <div class="sh-text">Три трека на выбор</div>
+      <div class="sh-rule"></div>
+    </div>
+
+    <div class="tracks">
+      <div class="track">
+        <div class="track-tag">Трек А</div>
+        <div class="track-name">Контекстная реклама</div>
+        <div class="track-desc">Полный цикл РК в Директ: семантика, кластеризация, объявления, аудит, медиаплан. Коммандер, Метрика, Adsensor.</div>
+      </div>
+      <div class="track">
+        <div class="track-tag">Трек Б</div>
+        <div class="track-name">Интернет-маркетолог</div>
+        <div class="track-desc">Ведение клиентов, документооборот, отчёты и презентации, медиапланирование. Excel, Яндекс.Бизнес, SEO.</div>
+      </div>
+      <div class="track">
+        <div class="track-tag">Трек В</div>
+        <div class="track-name">Маркетплейсы</div>
+        <div class="track-desc">Кабинеты WB и Ozon: карточки, цены, реклама, аналитика, SEO-описания, юнит-экономика.</div>
+      </div>
+    </div>
+
+    <!-- HOW -->
+    <div class="sh">
+      <div class="sh-mark"></div>
+      <div class="sh-text">Как построено обучение</div>
+      <div class="sh-rule"></div>
+    </div>
+
+    <div class="how-list">
+      <div class="how-item">
+        <div class="how-n">01</div>
+        <div class="how-body">Обучение в <strong>своём темпе</strong> без жёсткого расписания. Сам решаешь, когда изучать материалы.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">02</div>
+        <div class="how-body"><strong>Раз в неделю</strong> куратор проверяет задание и даёт письменную обратную связь по каждому критерию.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">03</div>
+        <div class="how-body">Все материалы, чек-листы и шаблоны хранятся <strong>в Тимли.</strong> Туда же сдаёшь задания.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">04</div>
+        <div class="how-body">Каждое задание сдаётся с <strong>чек-листом самопроверки</strong> - обязательное условие приёмки.</div>
+      </div>
+    </div>
+
+    <!-- SCORING -->
+    <div class="sh">
+      <div class="sh-mark"></div>
+      <div class="sh-text">Система оценки</div>
+      <div class="sh-rule"></div>
+    </div>
+
+    <div class="scores">
+      <div class="s-row g">
+        <div class="s-label"><span class="s-dot"></span>85-100 баллов</div>
+        <div class="s-text">Предложение о работе в штат SF.RU.</div>
+      </div>
+      <div class="s-row a">
+        <div class="s-label"><span class="s-dot"></span>70-84 балла</div>
+        <div class="s-text">Индивидуальное рассмотрение с тимлидом.</div>
+      </div>
+      <div class="s-row r">
+        <div class="s-label"><span class="s-dot"></span>Ниже 70 баллов</div>
+        <div class="s-text">Стажировка не засчитана, развёрнутая обратная связь.</div>
+      </div>
+      <div class="s-row x">
+        <div class="s-label"><span class="s-dot"></span>2 пропуска подряд</div>
+        <div class="s-text">Автоматическое выбывание.</div>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="sh">
+      <div class="sh-mark"></div>
+      <div class="sh-text">Что сделать прямо сейчас</div>
+      <div class="sh-rule"></div>
+    </div>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-n">1</div>
+        <div class="step-body"><strong>Заполни Google-форму</strong> по ссылке ниже. Мы соберём контактные данные и добавим тебя в Тимли с программой обучения. Без этого доступ к материалам не откроется.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-n">2</div>
+        <div class="step-body">Жди письмо с <strong>доступом в Тимли</strong> - придёт после заполнения формы, до 12 мая.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-n">3</div>
+        <div class="step-body"><strong>12 мая</strong> открывай Тимли, находи материалы нулевой недели и начинай. Первая неделя твоя, никто не торопит.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <div class="cta-eyebrow">Обязательный шаг до 11 мая</div>
+      <div class="cta-title">Заполни форму - получи доступ к обучению</div>
+      <div class="cta-sub">
+        Имя и фамилия / Телефон / Telegram / Email / Предпочтительный трек<br>
+        После заполнения мы добавим тебя в Тимли с программой обучения
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXT9d2-9Wj86oKikSlSsM4axdPgvyvzQoXHf2LmJjOTK6o3Q/viewform?usp=dialog" class="cta-btn" target="_blank">Заполнить форму</a>
+      <div class="cta-hint"></div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ftr">
+    <div class="ftr-logo">SF<span>.</span>RU</div>
+    <div class="ftr-info">
+      Solutions Factory<br>
+      Контекст / Маркетплейсы / SEO / Аналитика
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
